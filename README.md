@@ -1,4 +1,4 @@
-hackfest.github.com
+## Website for Monthly Hackathon in Pune, India.
 ===================
 
-hackfest.in
+Visit http://hackfest.in for more about it. First Hackathon on Saturday, 5th May - 2012.
