@@ -1,3 +1,245 @@
-<h1>
-It rocks!
-</h1>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!--[if IE 7 ]>    <html class= "ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class= "ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class= "ie9"> <![endif]-->
+<!--[if lt IE 9]>
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Let's do that 'trial & error' thing!</title>
+
+<!-- *************************************************************************
+**************************   STYLE SHEET   *******************************
+************************************************************************** -->
+
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- *************************************************************************
+**************************        JS       *******************************
+************************************************************************** -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/custom.js"> </script>
+
+<!-- *************************************************************************
+*********************  THIS IS THE CONTACT FORM JS  **************************
+************************************************************************** -->
+
+<script type='text/javascript'>
+
+$(document).ready(function(){
+	var active_color = '#929191'; // Colour of user provided text
+	var inactive_color = '#929191'; // Colour of default text
+        	  $("input.default-value").css("color", inactive_color);
+        	  var default_values = new Array();
+        	  $("input.default-value").focus(function() {
+        	    if (!default_values[this.id]) {
+        	      default_values[this.id] = this.value;
+        	    }
+        	    if (this.value == default_values[this.id]) {
+        	      this.value = '';
+        	      this.style.color = active_color;
+        	    }
+        	    $(this).blur(function() {
+        	      if (this.value == '') {
+        	        this.style.color = inactive_color;
+        	        this.value = default_values[this.id];
+        	      }
+        	    });
+        	  });
+
+        	$('#contactform').submit(function(){
+
+            formvalues = $("#contactform").serialize();
+
+            $.ajax({
+                type: "POST",
+                url: "mailer.php",
+                data: formvalues,
+                dataType: "json",
+                success: function(data) {
+                    if (data.success==1) {
+                        $("#contactwrapper").slideUp(750,function() {
+                            $('#contactmessage').html('Thanks! Please check your email to confirm your subscription.');
+                            });
+                    }
+                    else{
+                        if (data.invalid_email==1) { $('#contact_email').addClass("form_error"); }
+                            else { $('#contact_email').removeClass("form_error"); }
+
+                   }
+            }
+            });
+        	    return false;
+        	});
+
+        });
+</script>
+
+<!-- END OF SCRIPT FOR MENU -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#form").val();
+});
+</script>
+
+</head>
+
+<body>
+
+<!-- Start of wrapper -->
+<div id="wrapper">
+
+    <!-- Start of top content wrapper -->
+    <div id="top_content_wrapper">
+
+    	<!-- Start of product image -->
+        <div style="height: 500px;">
+
+        <!-- Start of social -->
+        <div id="social">
+
+            <!-- Start of facebook -->
+            <!--<div class="facebook">
+
+            <a href="http://facebook.com" target="_blank"></a>
+
+            </div>--><!-- End of facebook -->
+
+            <!-- Start of tweet -->
+            <!--<div class="tweet">
+
+            <a href="http://twitter.com/hackfest_in" target="_blank"></a>
+
+            </div>--><!-- End of tweet -->
+
+        </div><!-- End of social -->
+
+        </div><!-- End of product image -->
+
+        <!-- Start of product content -->
+        <div style="width:100%; margin-top:-420px; left:10px; position:relative;	z-index:60; text-align:center;">
+        <img src="img/hf_logo.png">
+        </div>
+        <div id="product_content">
+		<br /><br /><br />
+        <h2>DOERS-TO-DOERS</h2>
+        <h6>MONTHLY HACKATHON</h6>
+
+        <div class="clear_small"></div><!-- This is a clear fix -->
+
+        <p style="font-size: 18px; text-aling:center">It's a platform where each of us can surface those great ideas within us by collaborating with geeks and by spending hours cracking away on it.</p>
+
+            <div style="text-align: center;">
+            <!-- Start of count me in -->
+				<div id="count_me_in">
+					<form action="mailer.php" id="contact_form" method="post">
+						<ul>
+							<li class="name">
+								<label>Full Name<span class="required"></span></label>
+								<input type="text" name="name" id="name" value="Your full name" onblur="if(this.value == '') { this.value = 'Your full name'; }" onfocus="if(this.value == 'Your full name') { this.value = ''; }" />
+							</li>
+							<li class="email">
+								<label>Email Address<span class="required"></span></label>
+								<input type="text" name="email" id="email" value="Your email address" class="requiredField email" onblur="if(this.value == '') { this.value = 'Your email address'; }" onfocus="if(this.value == 'Your email address') { this.value = ''; }" />
+							</li>
+							<li class="button"><input id="submitted" class="input-submit" type="submit" value="" name="submit" />
+							</li>
+						</ul>
+					</form>
+				</div>
+			<!-- End of count me in -->
+			</div>
+
+
+        </div><!-- End of product content -->
+
+    </div><!-- End of top content wrapper -->
+
+    <div class="clear"></div><!-- This is a clear fix -->
+
+    <!-- Start of main content wrapper -->
+    <div id="main_content_wrapper">
+
+    	<!-- Start of main content -->
+        <div id="main_content">
+
+        	<!-- Start of one third first -->
+            <div style="width: 60%; float: left;">
+
+            <h5>HackFest</h5>
+			<hr noshade="noshade" />
+			<br />
+            	<!-- Start of black title -->
+            	<div class="black_title">
+                Objective
+
+                </div><!-- End of black title -->
+
+            <p class="black">Our objective is to transform our game-changing ideas to some thing real and live at the end each session. We hope some of these ideas will lead to inspiring/disruptive innovations. Some of them may not reach to same glory, but it is the spirit of hacking will remain same.</p>
+			<br />
+				<div class="black_title">
+				HackFest #1
+
+				</div><!-- End of black title -->
+
+				<p class="black">We welcome hackers of all background to the first version of HackFest on <font color="#eb592a">May 5th 2012</font>. We plan to kick-start the day with few talks by the dudes we adore. Post which the hackathon on <font color="#eb592a">`scripting command line dev-tools`</font> will begin. Yes, in future, for coming HackFests, we would like you to propose some talks for unconference.</p>
+
+            </div><!-- End of one third first -->
+
+            <!-- Start of one third -->
+            <div style="width: 40%; float: right; text-align: center;">
+            	<img src="img/arithmetica.jpg" style="margin-bottom: 20px;" />
+            	<br />
+            	<center>
+            		<p class="black" style="text-align: center;">Typus Mathematica</p>
+            	</center>
+            	<p class="black" style="text-align: center;">Source: <a href="http://bibliodyssey.blogspot.in/2006/12/margarita-philosophica.html" target="_blank">Margarita Philosophica</a></p>
+            	<br />
+            </div>
+			<!-- End of one third -->
+
+            <div class="clear"></div><!-- This is a clear fix -->
+
+        </div><!-- End of main content -->
+
+        <!-- Start of footer -->
+        <div id="freebie">
+
+        <h4>LET THE CONSOLE BLOOM</h4>
+
+        <p class="center">
+        	We'll open the doors at <span style="font-weight:bold; font-size: 15px;">10 AM</span>. Come at C1 Building, 3<sup>rd</sup> floor, Nyati millenium, <span style="font-weight:bold; font-size: 15px;">Viman Nagar</span>, Pune.
+        	<br /><br />
+        	Bug Krunal (+91 85548 73684) if in need. He prefers texts btw. Cheers!
+        </p>
+        <br />
+        <center>
+        	<div class="tweet">
+				<a href="http://twitter.com/hackfest_in" target="_blank"></a>
+            </div>
+        </center>
+
+
+        </div><!-- End of footer -->
+
+    </div><!-- End of main content wrapper -->
+
+    <div class="clear_small"></div><!-- This is a clear fix -->
+
+    <div class="clear_small"></div><!-- This is a clear fix -->
+
+</div><!-- End of wrapper -->
+
+</body>
+
+</html>
