@@ -1,4 +1,4 @@
-## Website for Monthly Hackathon in Pune, India.
+## Monthly Hackathon in Pune, India.
 ===================
 
-Visit http://hackfest.in for more about it. First Hackathon on Saturday, 5th May - 2012.
+Visit http://hackfest.in for more about it. Second Hackathon on 23rd June - 2012. Join us :)
