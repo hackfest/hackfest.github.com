@@ -89,12 +89,16 @@ body {
 	
 a {
 	text-decoration:none;
-	color:#edcebd;
+	color:#eee;
+	background-color: #eb592a;
+	padding: 0 0.3em;
 	}
 
 a:hover {
 	text-decoration:underline;
-	color:#edcebd;
+	color:#fff;
+	background-color: #eb592a;
+	padding:0 0.3em;
 	}
 
 p {
@@ -247,7 +251,7 @@ div .first {
 .tweet {
 	height:36px;
 	width:35px;
-	//float:left;
+	float:right;
 	}
 	
 .facebook a {
